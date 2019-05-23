@@ -22,7 +22,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     rectangle->setFlag(QGraphicsItem::ItemIsMovable);
 
-
 }
 
 MainWindow::~MainWindow()
@@ -33,5 +32,18 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_CLI_returnPressed()
 {
+    QString text = ui->CLI->text();
+    ui->commandHistory->insertPlainText(text);
+    ui->commandHistory->insertPlainText("\n");
+
+
+
+
+    QBrush redBrush(Qt::red);
+    QBrush blueBrush(Qt::blue);
+    QPen blackpen(Qt::black);
+    blackpen.setWidth(6);
+    scene->addRect(0, 0, 100, 100, blackpen, redBrush);
+
     ui->CLI->clear();
 }
